@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'drf_api',
     'rest_framework',
+    'django_filters',
 
     'profiles',
     'posts',
