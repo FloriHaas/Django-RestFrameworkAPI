@@ -1,8 +1,10 @@
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 
-if os.path.exists('env.py'):
-    import env
+# Load environment variables from the .env file
+load_dotenv()
+
 
 CLOUDINARY_STORAGE = {
     'CLOUDINARY_URL': os.environ.get('CLOUDINARY_URL')
@@ -43,10 +45,10 @@ REST_AUTH_SERIALIZERS = {
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-)u#7ngfdc(7b4a_34t@8g6fblg^@0aa24e^nf18ls&*pqwwrml'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
