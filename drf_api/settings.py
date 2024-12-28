@@ -126,17 +126,16 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'drf_api.wsgi.application'
 
+import dj_database_url
 
-# Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+DATABASE_URL = os.getenv('DATABASE_URL')
 
+# Default DATABASES configuration for SQLite (for local development)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default=DATABASE_URL)
 }
 
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
